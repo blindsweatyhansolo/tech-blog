@@ -18,14 +18,14 @@ router.get('/', (req, res) => {
         ],
         include: [
             // include Comment and User model associations
-            // {
-            //     model: Comment,
-            //     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-            //     include: {
-            //         model: User,
-            //         attributes: ['username']
-            //     }
-            // },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
             {
                 model: User,
                 attributes: ['username']
@@ -53,14 +53,14 @@ router.get('/:id', (req, res) => {
             'created_at'
         ],
         include: [
-            // {
-            //     model: Comment,
-            //     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-            //     include: {
-            //         model: User,
-            //         attributes: ['username']
-            //     }
-            // },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
             {
                 model: User,
                 attributes: ['username']
@@ -76,8 +76,8 @@ router.get('/:id', (req, res) => {
       })
       .catch(err => {
           console.log(err);
-          res.status(500).json(err);
-      });
+          res.status(500).json({ message: 'Server error!' });
+        });
 });
 
 // POST create new post (/api/posts)
@@ -129,7 +129,7 @@ router.put('/:id', (req, res) => {
               res.status(404).json({ message: 'No post found with this id!' });
               return;
           }
-          res.json(dbPostData);
+          res.json({ message: 'Post updated! '});
       })
       .catch(err => {
           console.log(err);
@@ -152,7 +152,7 @@ router.delete('/:id', (req, res) => {
             res.status(404).json({ message: 'No post found with this id!' });
             return;
         }
-        res.json(dbPostData);
+        res.json({ message: 'Post deleted!' });
     })
     .catch(err => {
         console.log(err);

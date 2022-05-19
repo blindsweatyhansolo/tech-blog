@@ -1,6 +1,6 @@
 // ALL ROUTES FOR USER MODEL (CRUD actions)
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 // GET all users (/api/users)
 router.get('/', (req, res) => {
@@ -26,6 +26,18 @@ router.get('/:id', (req, res) => {
         },
         include: [
             // POST, COMMENT model associations here
+            {
+                model: Post,
+                attributes: ['id', 'title', 'created_at']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                    model: Post,
+                    attributes: ['title']
+                }
+            }
         ]
     })
     .then(dbUserData => {
@@ -125,7 +137,7 @@ router.put('/:id', (req, res) => {
             res.status(404).json({ message: 'No user found with this id!' });
             return;
         }
-        res.json(dbUserData);
+        res.json({ message: 'Password updated!' });
     })
     .catch(err => {
         console.log(err);
@@ -147,7 +159,7 @@ router.delete('/:id', (req, res) => {
             res.status(404).json({ message: 'No user found with this id!' });
             return;
         }
-        res.json(dbUserData);
+        res.json({ message: 'User deleted!' });
     })
     .catch(err => {
         console.log(err);

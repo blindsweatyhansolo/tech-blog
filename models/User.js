@@ -8,6 +8,11 @@ const bcrypt = require('bcrypt');
 
 class User extends Model {
     // INSTANCE METHOD for password verification on login
+    // uses bcrypt's compare method with two parameters: plaintext password from user
+    // and hashed password from database (using 'this' keyword)
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password);
+    }
 };
 
 // define User table columns and config

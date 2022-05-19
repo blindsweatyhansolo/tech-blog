@@ -62,7 +62,6 @@ router.post('/', (req, res) => {
         //     res.json(dbUserData);
         // })
         res.json(dbUserData);
-
     })
     .catch(err => {
         console.log(err);
@@ -72,6 +71,40 @@ router.post('/', (req, res) => {
 
 // POST login route (/login)
 // POST method for login is a more secure way of transferring data from client to server
+router.post('/login', (req, res) => {
+    // use email as parameter for Sequelize findOne() method
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+    .then(dbUserData => {
+        // 400 response if email is invalid / does not exist
+        if (!dbUserData) {
+            res.status(400).json({ message: 'No user found with that email address!' });
+            return;
+        }
+        
+        // verify user using User model instance method checkPassword()
+        const validPassword = dbUserData.checkPassword(req.body.password);
+
+        if (!validPassword) {
+            alert('Incorrect password!');
+            res.status(400).json({ message: 'Incorrect password! '});
+            return;
+        }
+
+        // req.session.save(() => {
+        //     // declare session variables
+        //     req.session.user_id = dbUserData.id;
+        //     req.session.username = dbUserData.username;
+        //     req.session.loggedIn = true;
+
+        //     res.json({ user: dbUserData, message: 'You are now logged in!'});
+        // });
+        res.json({ user: dbUserData, message: 'You are now logged in!'});
+    });
+});
 
 // POST logout route (/logout)
 // route destroys session

@@ -8,5 +8,24 @@
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
     "sequelize": "^6.19.2"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "tech-blog",
+  "description": "* [Description](#description)\r * [Installation](#installation)\r * [Usage](#usage)\r * [Tests](#tests)\r * [Contributions](#contributions)\r * [Additional Information](#additional-information)",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blindsweatyhansolo/tech-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blindsweatyhansolo/tech-blog/issues"
+  },
+  "homepage": "https://github.com/blindsweatyhansolo/tech-blog#readme"
 }

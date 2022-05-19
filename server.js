@@ -3,6 +3,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const routes = require('./controllers');
+const hbs = exphbs.create({});
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -24,10 +25,17 @@ const sess = {
 // helpers section placeholder //
 
 // middleware
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 // middleware for static assests in 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
+
+// handlebars set up
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 // turn on routes
 app.use(routes);
 

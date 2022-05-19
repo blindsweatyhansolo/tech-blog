@@ -16,7 +16,9 @@
   "description": "* [Description](#description)\r * [Installation](#installation)\r * [Usage](#usage)\r * [Tests](#tests)\r * [Contributions](#contributions)\r * [Additional Information](#additional-information)",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/blindsweatyhansolo/tech-blog.git"

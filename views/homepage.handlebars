@@ -1,0 +1,8 @@
+{{!-- HOMEPAGE --}}
+<ol class="post-list d-flex justify-content-center row bg-danger">
+    {{#each posts as |post|}}
+    <li class="list-unstyled">
+        {{> post-info post }}
+    </li>
+    {{/each}}
+</ol>

@@ -1,0 +1,15 @@
+{{!-- SINGLE POST PAGE --}}
+{{> post-info post }}
+
+{{#if loggedIn}}
+<div class="d-flex justify-content-center my-4">
+    <form class="comment-form col-12 col-lg-6">
+        <div class="form-group">
+            <textarea class="form-control mb-2" rows="2"></textarea>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary btn-block">ADD COMMENT</button>
+        </div>
+    </form>
+</div>
+{{/if}}

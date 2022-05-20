@@ -48,6 +48,61 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET route for single-post via post:id
+router.get('/post/:id', (req, res) => {
+    // find single post by id
+    Post.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'title',
+            'post_content',
+            'created_at'
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: [
+                    'id',
+                    'comment_text',
+                    'post_id',
+                    'user_id',
+                    'created_at'
+                ],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
+    })
+    .then(dbPostData => {
+        if (!dbPostData) {
+            res.status(404).json({ message: 'No post found with this id!'});
+            return;
+        }
+
+        // serialize data
+        const post = dbPostData.get({ plain: true });
+
+        // pass to template, second variable set as loggedIn status
+        res.render('single-post', {
+            post,
+            loggedIn: req.session.loggedIn
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({ message: 'Server error!' });
+    });
+});
+
 // GET route for login/signup page
 router.get('/login', (req, res) => {
     // check for session, redirect to homepage if true

@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
     
     // find all posts
     Post.findAll({
+        order: [['created_at', 'DESC']],
         attributes: [
             'id',
             'title',

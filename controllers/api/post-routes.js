@@ -2,6 +2,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Post, User, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET all posts (/api/posts)
 // includes: associated User and Comment data
@@ -82,27 +83,22 @@ router.get('/:id', (req, res) => {
 
 // POST create new post (/api/posts)
 // active session must exist (withAuth)
-// router.post('/', withAuth, (req, res) => {
-router.post('/', (req, res) => {
-    // check if session exists
-    if (req.session) {
-        Post.create({
-            title: req.body.title,
-            post_content: req.body.post_content,
-            user_id: req.session.user_id
-        })
-          .then(dbPostData => res.json(dbPostData))
-          .catch(err => {
-              console.log(err);
-              res.status(500).json(err);
-          });
-    }
+router.post('/', withAuth, (req, res) => {
+    Post.create({
+        title: req.body.title,
+        post_content: req.body.post_content,
+        user_id: req.session.user_id
+    })
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 // PUT update post's title and contents (/api/posts/:id)
 // active session must exist (withAuth)
-// router.put('/:id', withAuth, (req, res) => {
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Post.update(
         {
             title: req.body.title,
@@ -130,8 +126,7 @@ router.put('/:id', (req, res) => {
 
 // DELETE remove post (/api/posts/:id)
 // active session must exist (withAuth)
-// router.delete('/:id', withAuth, (req, res) => {
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id

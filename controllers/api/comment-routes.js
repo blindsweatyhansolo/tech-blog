@@ -1,6 +1,7 @@
 // ALL ROUTES FOR COMMENT MODEL (CRUD actions)
 const router = require('express').Router();
 const { Comment, User, Post } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET all comments (/api/comments)
 // includes associated User and Post data
@@ -69,8 +70,7 @@ router.get('/:id', (req, res) => {
 
 // POST new comment (/api/comments)
 // active session must exist (withAuth)
-// router.post('/', withAuth, (req, res) => {
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     // check if session exists before new comment creation
     if (req.session) {
         Comment.create({
@@ -85,23 +85,12 @@ router.post('/', (req, res) => {
             res.status(400).json(err);
         });
     }
-    // Comment.create({
-    //     comment_text: req.body.comment_text,
-    //     post_id: req.body.post_id,
-    //     user_id: req.body.user_id
-    // })
-    // .then(dbCommentData => res.json(dbCommentData))
-    // .catch(err => {
-    //     console.log(err);
-    //     res.status(400).json(err);
-    // });
 });
 
 
 // DELETE comment (/api/comments/:api)
 // active session must exist (withAuth)
-// router.delete('/', withAuth, (req, res) => {
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Comment.destroy({
         where: {
             id: req.params.id

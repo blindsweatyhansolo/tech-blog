@@ -20,7 +20,7 @@ async function loginFormHandler(event) {
 
         // check response, redirect to dashboard on success
         if (response.ok) {
-            document.location.replace('/');
+            document.location.replace('/dashboard');
         } else {
             // CHANGE TO MODAL!! //
             alert('USER NOT FOUND');

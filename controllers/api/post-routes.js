@@ -85,28 +85,18 @@ router.get('/:id', (req, res) => {
 // router.post('/', withAuth, (req, res) => {
 router.post('/', (req, res) => {
     // check if session exists
-    // if (req.session) {
-    //     Post.create({
-    //         title: req.body.title,
-    //         post_content: req.body.post_content,
-    //         user_id: req.session.user_id
-    //     })
-    //       .then(dbPostData => res.json(dbPostData))
-    //       .catch(err => {
-    //           console.log(err);
-    //           res.status(500).json(err);
-    //       });
-    // }
-    Post.create({
-        title: req.body.title,
-        post_content: req.body.post_content,
-        user_id: req.body.user_id
+    if (req.session) {
+        Post.create({
+            title: req.body.title,
+            post_content: req.body.post_content,
+            user_id: req.session.user_id
         })
-        .then(dbPostData => res.json(dbPostData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+          .then(dbPostData => res.json(dbPostData))
+          .catch(err => {
+              console.log(err);
+              res.status(500).json(err);
+          });
+    }
 });
 
 // PUT update post's title and contents (/api/posts/:id)

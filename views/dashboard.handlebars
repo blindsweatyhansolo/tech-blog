@@ -1,0 +1,49 @@
+{{!-- DASHBOARD PAGE --}}
+<div class="d-flex justify-content-between my-4 flex-wrap">
+    <div class="col-12 col-md-5 mb-4">
+
+        <article class="new-post card mt-4 shadow">
+            <div class="card-header">
+                <h2 class="card-title">Create New Post:</h2>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <form class="new-post-form">
+                        <div class="form-group mb-2">
+                            <label for="post-title">Title:</label>
+                            <input type="text" name="post-title" id="post-title" class="form-control col-12"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-body">Content:</label>
+                            <textarea name="post-body" class="form-control mb-2" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary col-12"><i class="bi bi-pencil-square"></i> POST</button>
+                    </form>
+                </div>
+        </article>
+
+    </div>
+
+    {{!-- RENDER POSTS BY LOGGED IN USER --}}
+    {{#if posts.length}}
+    <section class="user-posts col-12 col-md-6 mx-2">
+        <h2>My Posts:</h2>
+            <ul class="list-group">
+                {{#each posts as |post|}}
+                <div class="d-flex col-12 row my-2 rounded shadow">
+                    <li class="list-group-item">
+                        {{> post-info post }}
+                    <div class="d-flex flex-row justify-content-around">
+                        <button class="btn btn-primary edit-btn col-4 shadow"><i class="bi bi-pencil-square"></i> EDIT</button>
+                        <button class="btn btn-danger delete-btn col-4 shadow"><i class="bi bi-trash"></i> DELETE</button>
+                    </div>
+                    </li>
+                </div>
+                {{/each}}
+            </ul>
+    </section>
+    {{/if}}
+</div>
+
+{{!-- script for new post creation logic --}}
+<script src="/javascript/add-post.js"></script>

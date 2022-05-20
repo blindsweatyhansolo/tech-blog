@@ -46,4 +46,9 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET route for login/signup page
+router.get('/login', (req, res) => {
+    res.render('login');
+});
+
 module.exports = router;

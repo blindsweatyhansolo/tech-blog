@@ -21,7 +21,7 @@
                     <button type="submit" class="btn btn-primary col-12 col-md-4 mb-2">
                         <i class="bi bi-save"></i> SAVE
                     </button>
-                    <button class="btn btn-danger delete-btn col-4 shadow">
+                    <button class="btn btn-danger delete-btn col-12 col-md-4 shadow">
                         <i class="bi bi-trash"></i> DELETE
                     </button>
 
@@ -32,7 +32,7 @@
     </article>
 
     {{#if post.comments.length}}
-    <section class="col-12 mx-4">
+    <section class="col-12 mx-4 d-flex justify-content-center mt-2">
     {{> comments post.comments }}
     </section>
     {{/if}}

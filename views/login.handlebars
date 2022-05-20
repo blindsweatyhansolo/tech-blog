@@ -1,13 +1,16 @@
 {{!-- LOGIN / SIGN-UP PAGE --}}
-<div class="d-flex justify-content-center my-4">
-    <form class="login-form my-4 mx-2 col-12 col-sm-10 col-md-8 col-lg-6">
+<div class="text-center mt-4 pt-2">
+    <p><em>Welcome back!</em> </p>
+</div>
+<div class="d-flex justify-content-center mb-4 col-12">
+    <form class="login-form my-4 mx-2 col-12 col-md-6">
         <div class="form-outline mb-3">
             <label for="email-login" class="form-label">Email:</label>
             <input type="email" id="email-login" class="form-control"/>
         </div>
         <div class="form-outline mb-3">
             <label for="password" class="form-label">Password:</label>
-            <input type="password" id="password-login" class="form-control"/>
+            <input type="password" id="password-login" class="form-control" autocomplete="off"/>
         </div>
         <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
@@ -16,10 +19,10 @@
 </div>
 
 <div class="text-center">
-    <p>Not a member? Register below:</p>
+    <p><em>Not a member? Register below:</em> </p>
 </div>
-<div class="d-flex justify-content-center">
-    <form class="signup-form mt-2 mx-2 col-12 col-sm-10 col-md-8 col-lg-6">
+<div class="d-flex justify-content-center col-12">
+    <form class="signup-form mt-2 mx-2 col-12 col-md-6">
         <div class="form-outline mb-3">
             <label for="username-signup" class="form-label">Username:</label>
             <input type="text" id="username-signup" class="form-control"/>
@@ -30,7 +33,7 @@
         </div>
         <div class="form-outline mb-3">
             <label for="password" class="form-label">Password:</label>
-            <input type="password" id="password-signup" class="form-control"/>
+            <input type="password" id="password-signup" class="form-control" autocomplete="off"/>
         </div>
         <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-primary btn-block">SIGN-UP</button>

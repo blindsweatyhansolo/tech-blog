@@ -40,7 +40,10 @@ router.get('/', (req, res) => {
         // serialize data before rendering page
         const posts = dbPostData.map(post => post.get({ plain: true }));
         // render homepage, object(s) to be passed into template
-        res.render('homepage', { posts });
+        res.render('homepage', { 
+            posts, 
+            loggedIn: req.session.loggedIn 
+        });
     })
     .catch(err => {
         console.log(err);
@@ -111,7 +114,7 @@ router.get('/login', (req, res) => {
         return;
     }
 
-    res.render('login');
+    res.render('login', {loggedIn: req.session.loggedIn});
 });
 
 module.exports = router;

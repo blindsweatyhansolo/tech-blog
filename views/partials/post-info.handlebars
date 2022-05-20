@@ -1,8 +1,13 @@
-<article class="post">
-    <div class="title">
-        {{ title }}
+<article class="post card my-2">
+    <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-person-circle"></i> {{ user.username }} | {{ created_at }}</h6>
+        <p class="card-text text-justify">{{ post_content }}</p>
     </div>
-    <div class="content">
-        {{ post_content }}
+    <div class="card-footer text-center">
+        <strong><i class="bi bi-chat-dots"></i> {{ comments.length }} comment(s)</strong>
+        {{#if loggedIn}}
+        | <i class="bi bi-pencil-square"></i><a href="#"> Comment</a>
+        {{/if}}
     </div>
 </article>

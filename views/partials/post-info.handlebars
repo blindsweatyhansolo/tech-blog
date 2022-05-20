@@ -1,12 +1,15 @@
 <article class="post card my-4 shadow">
     <div class="card-body">
-        <h3 class="card-title">{{title}}</h3>
-        <h6 class="card-subtitle mb-2 text-muted">
-            <i class="bi bi-person-circle"></i> {{ user.username }} | {{ created_at }}
+        <a href="/post/{{id}}">
+            <h3 class="card-title mb-3">{{title}}</h3>
+        </a>
+        <h6 class="card-subtitle mb-3 text-muted">
+            <i class="bi bi-person-circle"></i> {{ user.username }} | 
+            <em>{{ created_at }}</em>
         </h6>
-        <p class="card-text text-justify">{{ post_content }}</p>
+        <p class="card-text text-justify mb-2">{{ post_content }}</p>
     </div>
-    <div class="card-footer text-center">
+    <div class="card-footer text-center d-flex flex-row-reverse">
         <strong><i class="bi bi-chat-dots"></i> {{ comments.length }} comment(s)</strong>
     </div>
 </article>

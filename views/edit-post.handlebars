@@ -1,0 +1,37 @@
+{{!-- EDIT SINGLE POST PAGE --}}
+<div class="d-flex justify-content-center my-4 flex-wrap">
+    <article class="edit-post card shadow col-12 col-md-10">
+        <div class="card-header">
+            <h2>Edit Post:</h2>
+            <div class="card-subtitle text-muted">
+                <i class="bi bi-person-circle"></i> {{ post.user.username }} | 
+                <em>{{ post.created_at }}</em> |
+                <strong><i class="bi bi-chat-dots"></i> {{ post.comments.length }} comment(s)</strong>
+            </div>
+        </div>
+        <div class="card-body">
+            <form class="edit-post-form">
+                <div class="form-group mb-2">
+                    <input type="text" name="post-title" value="{{post.title}}" class="form-control col-12" />
+                </div>
+                <div class="form-group mb-2">
+                    <textarea name="post-content" rows="3" class="form-control col-12">{{post.post_content}}</textarea>
+                </div>
+                <div class="d-flex flex-wrap justify-content-around">
+                    <button type="submit" class="btn btn-primary col-12 col-md-4 mb-2">
+                        <i class="bi bi-save"></i> SAVE
+                    </button>
+                    {{!-- <button class="delete-btn btn btn-danger col-12 col-md-4 mb-2">DELETE</button> --}}
+                </div>
+            </form>
+        </div>
+    </article>
+
+    {{#if post.comments.length}}
+    <section class="col-12 mx-4">
+    {{> comments post.comments }}
+    </section>
+    {{/if}}
+</div>
+
+<script src="/javascript/edit-post.js"></script>

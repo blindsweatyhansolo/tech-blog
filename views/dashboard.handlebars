@@ -4,7 +4,7 @@
 
         <article class="new-post card mt-4 shadow">
             <div class="card-header">
-                <h2 class="card-title">Create New Post:</h2>
+                <h2>Create New Post:</h2>
             </div>
             <div class="card-body">
                 <div class="card-text">
@@ -34,7 +34,10 @@
                     <li class="list-group-item">
                         {{> post-info post }}
                     <div class="d-flex flex-row justify-content-around">
-                        <button class="btn btn-primary edit-btn col-4 shadow"><i class="bi bi-pencil-square"></i> EDIT</button>
+                        <a href="/dashboard/edit/{{post.id}}" class="btn btn-primary col-4 shadow">
+                        <i class="bi bi-pencil-square"></i> EDIT
+                        {{!-- <button class="btn btn-primary edit-btn col-4 shadow"><i class="bi bi-pencil-square"></i> EDIT</button> --}}
+                        </a>
                         <button class="btn btn-danger delete-btn col-4 shadow"><i class="bi bi-trash"></i> DELETE</button>
                     </div>
                     </li>
@@ -47,3 +50,4 @@
 
 {{!-- script for new post creation logic --}}
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/delete-post.js"></script>

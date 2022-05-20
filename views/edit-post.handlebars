@@ -6,7 +6,7 @@
             <div class="card-subtitle text-muted">
                 <i class="bi bi-person-circle"></i> {{ post.user.username }} | 
                 {{ formatDate post.created_at }} |
-                <strong><i class="bi bi-chat-dots"></i> {{ post.comments.length }} comment(s)</strong>
+                <strong><i class="bi bi-chat-dots"></i> {{ post.comments.length }} {{ formatPlural "comment" post.comments.length }}</strong>
             </div>
         </div>
         <div class="card-body">

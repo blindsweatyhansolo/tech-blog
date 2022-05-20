@@ -30,9 +30,9 @@
     {{#if posts.length}}
     <section class="user-posts col-12 col-md-6 mx-2">
         <h2>My Posts:</h2>
-            <ul class="list-group">
+            <ul class="">
                 {{#each posts as |post|}}
-                <div class="d-flex col-12 row my-2 rounded shadow">
+                <div class="d-flex col-12 row my-2">
                     <li class="list-group-item">
                         {{> post-info post }}
                     <div class="d-flex flex-row justify-content-around">

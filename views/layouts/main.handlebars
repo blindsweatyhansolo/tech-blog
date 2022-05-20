@@ -8,18 +8,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/assets/style.css">
-    <title>The Tech Blog</title>
+    <title>Tech Blog</title>
 </head>
 
-<body class="bg-light">
+<body>
     <header>
-        <nav class="navbar bg-secondary px-3 justify-content-between">
-            <a href="/" class=" navbar-brand fs-4">Tech Blog</a>
-            <ul class="navbar-nav">
+        <nav class="navbar nav px-3 d-flex justify-content-around flex-wrap">
+            <div>
+                <a href="/" class="header navbar-brand fs-4">Technically Speaking</a>
+                <span>A blog for tech stuff, or anything else. I'm a blog not a cop.</span>
+            </div>
+            <ul class="nav d-flex flex-row justify-content-evenly">
                 <li class="nav-item text-light">
                     <a href="/" class="nav-link">HOME</a>
                 </li>
-               <li class="nav-item">
+               <li class="nav-item text-light">
                    <a href="/dashboard" class="nav-link">DASHBOARD</a>
                </li>
                {{#if loggedIn}}

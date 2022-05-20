@@ -1,3 +1,33 @@
+:root {
+    --primary-color: #F9EBC8;
+    --secondary-color: #FEFBE7;
+    --tertiary-color: #DAE5D0;
+    --quarternary-color: #A0BCC2;
+}
+
+
 a {
     text-decoration: none;
+    color: var(--quarternary-color)
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--tertiary-color);
+}
+
+.card {
+    background-color: var(--secondary-color);
+}
+
+.nav {
+    background-color: var(--quarternary-color);
+    text-decoration: none;
+}
+
+.header {
+    text-transform: uppercase;
 }

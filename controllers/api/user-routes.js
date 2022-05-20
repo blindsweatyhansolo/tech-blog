@@ -66,14 +66,13 @@ router.post('/', (req, res) => {
         // give server easy access to user's user_id/username and Boolean value for login status
         // session must be created BEFORE sending response back [req.session.save() method initiates
         // creation of session, then runs callback function]
-        // req.session.save(() => {
-        //     req.session.user_id = dbUserData.id;
-        //     req.session.username = dbUserData.username;
-        //     req.session.loggedIn = true;
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
 
-        //     res.json(dbUserData);
-        // })
-        res.json(dbUserData);
+            res.json(dbUserData);
+        });
     })
     .catch(err => {
         console.log(err);
@@ -93,6 +92,8 @@ router.post('/login', (req, res) => {
     .then(dbUserData => {
         // 400 response if email is invalid / does not exist
         if (!dbUserData) {
+            // frontend: CHANGE THIS TO MODAL!! //
+            alert('No user found!');
             res.status(400).json({ message: 'No user found with that email address!' });
             return;
         }
@@ -106,20 +107,32 @@ router.post('/login', (req, res) => {
             return;
         }
 
-        // req.session.save(() => {
-        //     // declare session variables
-        //     req.session.user_id = dbUserData.id;
-        //     req.session.username = dbUserData.username;
-        //     req.session.loggedIn = true;
+        req.session.save(() => {
+            // declare session variables
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
 
-        //     res.json({ user: dbUserData, message: 'You are now logged in!'});
-        // });
-        res.json({ user: dbUserData, message: 'You are now logged in!'});
+            res.json({ user: dbUserData, message: 'You are now logged in!'});
+        });
     });
 });
 
 // POST logout route (/logout)
 // route destroys session
+router.post('/logout', (req, res) => {
+    // check for session
+    if (req.session.loggedIn) {
+        // destroy() will end active session
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+
+    console.log(req.session);
+});
 
 // PUT update user password via id (/api/users/:id)
 router.put('/:id', (req, res) => {

@@ -22,15 +22,12 @@
                <li class="nav-item">
                    <a href="/dashboard" class="nav-link">DASHBOARD</a>
                </li>
-               {{#if loggedIn}}
-               <li class="nav-item">
-                   <button id="logout" class="btn btn-secondary">LOGOUT</button>
-               </li>
-               {{else}}
                <li class="nav-item">
                    <a href="/login" class="nav-link">LOGIN/SIGNUP</a>
                </li>
-               {{/if}}
+               <li class="nav-item">
+                   <button id="logout" class="btn btn-secondary">LOGOUT</button>
+               </li>
             </ul>
         </nav>
     </header>
@@ -44,10 +41,8 @@
     </footer>
 
 
-    {{!-- script tag for logout logic located in public/javascript --}}
-    {{#if loggedIn}}
-    <script src="/javascript/logout.js"></script>
-    {{/if}}
-</body>
+{{!-- script tag for logout logic located in public/javascript --}}
+<script src="/javascript/logout.js"></script>
 
+</body>
 </html>

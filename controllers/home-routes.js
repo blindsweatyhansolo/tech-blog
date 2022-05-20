@@ -5,6 +5,8 @@ const { Post, User, Comment } = require('../models');
 
 // GET root route (GET all posts for homepage on load)
 router.get('/', (req, res) => {
+    console.log(req.session);
+    
     // find all posts
     Post.findAll({
         attributes: [
@@ -48,6 +50,12 @@ router.get('/', (req, res) => {
 
 // GET route for login/signup page
 router.get('/login', (req, res) => {
+    // check for session, redirect to homepage if true
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+
     res.render('login');
 });
 

@@ -4,12 +4,13 @@
             <h3 class="card-title mb-3">{{title}}</h3>
         </a>
         <h6 class="card-subtitle mb-3 text-muted">
-            <i class="bi bi-person-circle"></i> {{ user.username }} | 
-            <em>{{ created_at }}</em>
+            <i class="bi bi-person-circle"></i> {{ user.username }} 
+            <br>  
+            <i class="bi bi-calendar3"></i> {{ formatDate created_at }}
         </h6>
         <p class="card-text text-justify mb-2">{{ post_content }}</p>
     </div>
     <div class="card-footer text-center d-flex flex-row-reverse">
-        <strong><i class="bi bi-chat-dots"></i> {{ comments.length }} comment(s)</strong>
+        <strong><i class="bi bi-chat-dots"></i> {{ comments.length }} {{ formatPlural "comment" comments.length }}</strong>
     </div>
 </article>

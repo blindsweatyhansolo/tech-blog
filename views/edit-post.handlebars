@@ -1,11 +1,11 @@
 {{!-- EDIT SINGLE POST PAGE --}}
-<div class="d-flex justify-content-center my-4 flex-wrap">
+<div class="d-flex justify-content-center my-4 flex-wrap col-10">
     <article class="edit-post card shadow col-12 col-md-10">
         <div class="card-header">
             <h2>Edit Post:</h2>
             <div class="card-subtitle text-muted">
                 <i class="bi bi-person-circle"></i> {{ post.user.username }} | 
-                <em>{{ post.created_at }}</em> |
+                {{ formatDate post.created_at }} |
                 <strong><i class="bi bi-chat-dots"></i> {{ post.comments.length }} comment(s)</strong>
             </div>
         </div>

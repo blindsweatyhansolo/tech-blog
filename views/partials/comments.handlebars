@@ -5,7 +5,9 @@
             <h5 class="card-title">
                 <i class="bi bi-person-circle"></i> {{user.username}}
             </h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{created_at}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">
+                <i class="bi bi-calendar3"></i> {{formatDate created_at}}
+            </h6>
 
             <p class="card-text">{{comment_text}}</p>
         </div>

@@ -17,7 +17,9 @@
                             <label for="post-body">Content:</label>
                             <textarea name="post-body" class="form-control mb-2" rows="5"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary col-12"><i class="bi bi-pencil-square"></i> POST</button>
+                        <button type="submit" class="btn btn-primary col-12">
+                            <i class="bi bi-pencil-square"></i> POST
+                        </button>
                     </form>
                 </div>
         </article>
@@ -35,7 +37,7 @@
                         {{> post-info post }}
                     <div class="d-flex flex-row justify-content-around">
                         <a href="/dashboard/edit/{{post.id}}" class="btn btn-primary col-4 shadow">
-                        <i class="bi bi-pencil-square"></i> EDIT
+                        <i class="bi bi-pencil"></i> EDIT
                         </a>
                     </div>
                     </li>

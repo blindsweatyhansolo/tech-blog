@@ -1,4 +1,4 @@
-const { formatDate, formatPlural } = require('../utils/helpers');
+const { formatDate, formatPlural, auditTimestamp } = require('../utils/helpers');
 
 // test to re-format created_at date
 test('formatDate() returns a clean date string', () => {
@@ -14,4 +14,12 @@ test('formatPlural() returns pluralized string', () => {
 
     expect(word1).toBe('Jedi');
     expect(word2).toBe('droids');
+});
+
+test('auditTimestamp() returns (true) Boolean if updated', () => {
+    const timestamp1 = '2022-05-23T23:39:22.000Z';
+    const timestamp2 = '2022-05-23T23:50:22.000Z'
+    const updatedContent = auditTimestamp(timestamp1 !== timestamp2);
+
+    expect(updatedContent).toBe(true);
 });

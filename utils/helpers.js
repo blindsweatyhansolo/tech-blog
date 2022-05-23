@@ -11,5 +11,11 @@ module.exports = {
         }
 
         return word;
+    },
+
+    auditTimestamp: (created_at, updated_at) => {
+        if (created_at !== updated_at) {
+            return true;
+        }
     }
 };

@@ -23,7 +23,7 @@ async function loginFormHandler(event) {
             document.location.replace('/dashboard');
         } else {
             // CHANGE TO MODAL!! //
-            alert('USER NOT FOUND');
+            alert('USER NOT FOUND!');
         }
     }
 };

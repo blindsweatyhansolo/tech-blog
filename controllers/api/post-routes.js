@@ -15,7 +15,8 @@ router.get('/', (req, res) => {
             'id',
             'title',
             'post_content',
-            'created_at'
+            'created_at',
+            'updated_at'
         ],
         include: [
             // include Comment and User model associations
@@ -51,7 +52,8 @@ router.get('/:id', (req, res) => {
             'id', 
             'title',
             'post_content',
-            'created_at'
+            'created_at',
+            'updated_at'
         ],
         include: [
             {

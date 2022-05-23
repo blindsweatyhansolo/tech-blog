@@ -93,7 +93,7 @@ router.post('/login', (req, res) => {
         // 400 response if email is invalid / does not exist
         if (!dbUserData) {
             // frontend: CHANGE THIS TO MODAL!! //
-            alert('No user found!');
+            console.log('No user found!');
             res.status(400).json({ message: 'No user found with that email address!' });
             return;
         }
@@ -102,7 +102,7 @@ router.post('/login', (req, res) => {
         const validPassword = dbUserData.checkPassword(req.body.password);
 
         if (!validPassword) {
-            alert('Incorrect password!');
+            // alert('Incorrect password!');
             res.status(400).json({ message: 'Incorrect password! '});
             return;
         }

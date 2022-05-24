@@ -82,7 +82,13 @@ router.get('/edit/:id', withAuth, (req, res) => {
         // serialize data before passing to template
         const post = dbPostData.get({ plain: true });
 
-        res.render('edit-post', { post, loggedIn: req.session.loggedIn });
+        res.render('edit-post', { 
+            post, 
+            loggedIn: req.session.loggedIn,
+            username: req.session.username,
+            creator: post.user_id === req.session.user_id ? true : false
+            }
+        );
     })
     .catch(err => {
         console.log(err);
@@ -122,19 +128,20 @@ router.get('/edit-comment/:id', withAuth, (req, res) => {
             res.status(404).json({ message: 'No comment found with this id!' });
             return;
         }
-
         const comment = dbCommentData.get({ plain: true });
 
         res.render('edit-comment', {
             comment,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            username: req.session.username,
+            creator: comment.user_id === req.session.user_id ? true : false
         });
     })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
-})
+});
 
 
 module.exports = router;

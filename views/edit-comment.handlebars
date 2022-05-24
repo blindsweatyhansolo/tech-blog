@@ -1,3 +1,4 @@
+{{#if creator}}
 <div class="comments card my-5 shadow col-10">
     <div class="card-body">
         <h5 class="card-title">
@@ -23,7 +24,16 @@
         </form>
     </div>
 </div>
+{{else}}
+<div class="d-flex flex-wrap justify-content-center my-4 col-10">
+    <h2>YOU ARE NOT AUTHORIZED TO EDIT POSTS FROM OTHER USERS</h2>
+    <a href="/dashboard" class="btn btn-warning col-12 col-md-6">
+        BACK TO DASHBOARD
+    </a>
+</div>
+{{/if}}
 
-
+{{#if creator}}
 <script src="/javascript/edit-comment.js"></script>
 <script src="/javascript/delete-comment.js"></script>
+{{/if}}

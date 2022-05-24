@@ -1,11 +1,9 @@
 {{!-- DASHBOARD PAGE --}}
 <div class="d-flex justify-content-between my-4 flex-wrap col-12">
     <div class="col-12 col-md-5 mb-4">
-
+        <h2>Create New Post:</h2>
+        
         <article class="new-post card mt-4 shadow">
-            <div class="card-header">
-                <h2>Create New Post:</h2>
-            </div>
             <div class="card-body">
                 <div class="card-text">
                     <form class="new-post-form">
@@ -27,9 +25,9 @@
     </div>
 
     {{!-- RENDER POSTS BY LOGGED IN USER --}}
-    {{#if posts.length}}
     <section class="user-posts col-12 col-md-6 mx-2">
-        <h2>My Posts:</h2>
+        <h2>Post History:</h2>
+    {{#if posts.length}}
             <ul class="">
                 {{#each posts as |post|}}
                 <div class="d-flex col-12 row my-2">
@@ -44,8 +42,13 @@
                 </div>
                 {{/each}}
             </ul>
-    </section>
+    {{else}}
+        <div class="card my-4 shadow text-center">
+            <p class="card-text my-4"><em>You have no posts yet! Use the form to create one.</em></p>
+        </div>
     {{/if}}
+
+    </section>
 </div>
 
 {{!-- script for new post creation logic --}}

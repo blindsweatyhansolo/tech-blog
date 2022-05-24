@@ -44,7 +44,8 @@ router.get('/', (req, res) => {
         // render homepage, object(s) to be passed into template
         res.render('homepage', { 
             posts, 
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            username: req.session.username
         });
     })
     .catch(err => {

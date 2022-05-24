@@ -1,4 +1,11 @@
 {{!-- HOMEPAGE --}}
+{{#if loggedIn}}
+<div class="welcome my-2 py-2">
+    <h4><i class="bi bi-person-circle"></i> <em>Welcome, {{username}}!</em></h4>
+</div>
+{{/if}}
+
+
 <ol class="post-list d-flex flex-column justify-content-center mx-2 my-2 col-12 col-md-10 px-2">
     {{#each posts as |post|}}
     <li class="list-unstyled">

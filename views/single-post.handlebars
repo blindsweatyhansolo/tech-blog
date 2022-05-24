@@ -1,6 +1,10 @@
 {{!-- SINGLE POST PAGE --}}
 {{> post-info post }}
 
+{{#if mutated}}
+<span class="btn btn-sm btn-warning">THIS POST HAS BEEN EDITED</span>
+{{/if}}
+
 {{#if loggedIn}}
 <div class="d-flex justify-content-center my-4 col-12">
     <form class="comment-form col-12 col-md-8">

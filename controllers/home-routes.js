@@ -1,9 +1,7 @@
 // ROUTES FOR HOMEPAGE
 const router = require('express').Router();
-const { get } = require('express/lib/response');
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
-const { auditTimestamp } = require('../utils/helpers');
 
 // GET root route (GET all posts for homepage on load)
 router.get('/', (req, res) => {
@@ -46,7 +44,8 @@ router.get('/', (req, res) => {
         // render homepage, object(s) to be passed into template
         res.render('homepage', { 
             posts, 
-            loggedIn: req.session.loggedIn 
+            loggedIn: req.session.loggedIn,
+            mutated: posts.created_at < posts.updated_at ? true : false
         });
     })
     .catch(err => {
@@ -98,23 +97,12 @@ router.get('/post/:id', (req, res) => {
 
         // serialize data
         const post = dbPostData.get({ plain: true });
-        const createdAt = post.created_at;
-        const updatedAt = post.updated_at;
-  
-        // const mutated = auditTimestamp(createdAt, updatedAt);
-        // console.log(`=============`);
-        // console.log(createdAt);
-        // console.log(updatedAt);
-        // console.log(mutated);
-        // console.log(`=============`);
-
 
         // pass to template, second variable set as loggedIn status
         res.render('single-post', {
             post,
-            // createdAt,
-            // updatedAt,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            mutated: post.created_at < post.updated_at ? true : false
         })
     })
     .catch(err => {

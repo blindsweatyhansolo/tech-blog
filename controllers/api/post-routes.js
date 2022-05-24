@@ -1,5 +1,6 @@
 // ALL ROUTES FOR POST MODEL (CRUD actions)
 const router = require('express').Router();
+const { json } = require('express/lib/response');
 const sequelize = require('../../config/connection');
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
@@ -117,6 +118,7 @@ router.put('/:id', withAuth, (req, res) => {
               res.status(404).json({ message: 'No post found with this id!' });
               return;
           }
+
           res.json({ message: 'Post updated! '});
       })
       .catch(err => {

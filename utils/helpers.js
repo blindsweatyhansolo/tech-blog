@@ -14,8 +14,8 @@ module.exports = {
     },
 
     auditTimestamp: (created_at, updated_at) => {
-        if (created_at !== updated_at) {
-            return true;
+        if (created_at == updated_at) {
+            return false;
         }
     }
 };

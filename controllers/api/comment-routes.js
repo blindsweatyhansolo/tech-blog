@@ -87,6 +87,31 @@ router.post('/', withAuth, (req, res) => {
     }
 });
 
+// PUT update comment (/api/comments/:id)
+router.put('/:id', withAuth, (req, res) => {
+    Comment.update(
+        {
+            comment_text: req.body.comment_text
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbCommentData => {
+        if (!dbCommentData) {
+            res.status(404).json({message: 'No comment matching id!'});
+            return;
+        }
+
+        res.json({message: 'Comment updated!'});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
 // DELETE comment (/api/comments/:api)
 // active session must exist (withAuth)

@@ -4,14 +4,16 @@
         <div class="card-body">
             <h5 class="card-title">
                 <i class="bi bi-person-circle"></i> {{user.username}}
+                <a href="/dashboard/edit-comment/{{id}}" class="btn edit-comment">
+                    <i class="bi bi-pencil"></i> /
+                    <i class="bi bi-trash"></i>
+                </a>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
                 <i class="bi bi-calendar3"></i> {{formatDate created_at}}
             </h6>
-
             <p class="card-text">{{comment_text}}</p>
         </div>
-        
     </div>
     {{/each}}
 </article>

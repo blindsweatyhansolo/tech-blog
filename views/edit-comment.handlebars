@@ -1,0 +1,29 @@
+<div class="comments card my-5 shadow col-10">
+    <div class="card-body">
+        <h5 class="card-title">
+            <p>Post: <em>{{comment.post.title}}</em></p>
+            <i class="bi bi-person-circle"></i> {{comment.user.username}}
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <i class="bi bi-calendar3"></i> {{formatDate comment.created_at}}
+        </h6>
+        
+        <form class="edit-comment-form">
+            <div class="form-group">
+                <textarea name="comment-body" class="form-control mb-2" rows="2">{{comment.comment_text}}</textarea>
+            </div>
+            <div class="d-flex flex-wrap justify-content-around">
+                <button class="btn edit-btn btn-primary btn-block col-12 col-md-4 mb-2 shadow">
+                    <i class="bi bi-save"></i> SAVE
+                </button>
+                <button class="btn delete-btn btn-danger btn-block col-12 col-md-4 mb-2 shadow">
+                    <i class="bi bi-trash"></i> DELETE
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="/javascript/edit-comment.js"></script>
+<script src="/javascript/delete-comment.js"></script>
